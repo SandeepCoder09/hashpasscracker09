@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hash Pass Decoder — Hacker Edition</title>
+
+  <!-- Hacker Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=VT323&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Crypto Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/spark-md5@3.0.2/spark-md5.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bcryptjs@2.4.3/dist/bcrypt.min.js"></script>
+</head>
+
+<body>
+
+<div class="scanlines"></div>
+<div class="crt"></div>
+
+<div class="app">
+
+  <header class="header">
+    <h1 class="logo">[ HASH PASS DECODER ]</h1>
+    <p class="subtitle">HACKER MODE ACTIVE...</p>
+  </header>
+
+  <main class="container">
+
+    <div class="panel left">
+      <label class="lbl">INPUT (HASH OR TEXT):</label>
+      <textarea id="input" class="txtbox" placeholder="Paste your hash or plain text here..."></textarea>
+
+      <label class="lbl">ALGORITHM:</label>
+      <div class="row">
+        <select id="algoSelect" class="select">
+          <option value="auto">AUTO-DETECT</option>
+          <option value="md5">MD5</option>
+          <option value="sha1">SHA-1</option>
+          <option value="sha256">SHA-256</option>
+          <option value="sha512">SHA-512</option>
+          <option value="base64">BASE64</option>
+          <option value="bcrypt">BCRYPT</option>
+        </select>
+
+        <button id="detectBtn" class="btn">DETECT</button>
+        <button id="identifyBtn" class="btn">IDENTIFY</button>
+      </div>
+
+      <div class="row">
+        <button id="genHashBtn" class="btn warn">GENERATE HASH</button>
+        <button id="base64Btn" class="btn">BASE64</button>
+      </div>
+
+      <label class="lbl">WORDLIST FILE:</label>
+      <input id="wordlistFile" type="file" class="fileInput">
+
+      <label class="lbl">WORDLIST (PASTE):</label>
+      <textarea id="wordlistPreview" class="txtbox" placeholder="word1\nword2\nword3..."></textarea>
+
+      <button id="crackBtn" class="btn danger">CRACK HASH</button>
+
+    </div>
+
+    <div class="panel right">
+      <h2 class="lbl">RESULT:</h2>
+      <pre id="result" class="resultBox">—</pre>
+
+      <div class="tags">
+        <span id="detected" class="tag">Detected: —</span>
+        <span id="algoUsed" class="tag">Algo: —</span>
+      </div>
+
+      <div class="row">
+        <button id="copyBtn" class="btn">COPY</button>
+        <button id="downloadBtn" class="btn">DOWNLOAD</button>
+        <button id="clearBtn" class="btn danger">CLEAR</button>
+      </div>
+
+      <progress id="prog" value="0" max="100" class="progress"></progress>
+      <div id="progText" class="progressText"></div>
+
+      <h3 class="lbl">LOG:</h3>
+      <pre id="log" class="logBox">READY.</pre>
+    </div>
+
+  </main>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
